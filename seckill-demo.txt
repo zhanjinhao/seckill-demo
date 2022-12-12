@@ -1,0 +1,113 @@
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
+--
+-- Host: 39.108.120.58    Database: seckill-demo
+-- ------------------------------------------------------
+-- Server version	8.0.30
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `t_goods`
+--
+
+DROP TABLE IF EXISTS `t_goods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_goods` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `stock` int NOT NULL,
+  `del_fg` tinyint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_goods`
+--
+
+LOCK TABLES `t_goods` WRITE;
+/*!40000 ALTER TABLE `t_goods` DISABLE KEYS */;
+INSERT INTO `t_goods` VALUES (1,'iphone14','iphone14 128G','A12345','苹果 iphone14 128G 5G 手机 官方标配',8999.00,1000,0);
+/*!40000 ALTER TABLE `t_goods` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_seckill_goods`
+--
+
+DROP TABLE IF EXISTS `t_seckill_goods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_seckill_goods` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `goods_id` bigint NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `stock` int NOT NULL,
+  `start_datetime` datetime NOT NULL,
+  `end_datetime` datetime NOT NULL,
+  `del_fg` tinyint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `t_seckill_goods_idx` (`id`,`stock`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_seckill_goods`
+--
+
+LOCK TABLES `t_seckill_goods` WRITE;
+/*!40000 ALTER TABLE `t_seckill_goods` DISABLE KEYS */;
+INSERT INTO `t_seckill_goods` VALUES (1,1,999.99,0,'2022-12-11 14:00:00','2022-12-18 14:00:00',0),(2,2,999.99,0,'2022-12-11 14:00:00','2022-12-18 14:00:00',0),(3,3,999.99,88,'2022-12-11 14:00:00','2022-12-18 14:00:00',0),(4,4,999.99,88,'2022-12-11 14:00:00','2022-12-18 14:00:00',0),(5,5,999.99,0,'2022-12-11 14:00:00','2022-12-18 14:00:00',0);
+/*!40000 ALTER TABLE `t_seckill_goods` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_seckill_order`
+--
+
+DROP TABLE IF EXISTS `t_seckill_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_seckill_order` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seckill_goods_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `t_seckill_order_idx` (`seckill_goods_id`,`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12427 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_seckill_order`
+--
+
+LOCK TABLES `t_seckill_order` WRITE;
+/*!40000 ALTER TABLE `t_seckill_order` DISABLE KEYS */;
+INSERT INTO `t_seckill_order` VALUES (12104,'addenda0',1),(12106,'addenda1',1),(12113,'addenda10',1),(12114,'addenda11',1),(12115,'addenda12',1),(12117,'addenda13',1),(12116,'addenda14',1),(12120,'addenda15',1),(12119,'addenda16',1),(12121,'addenda17',1),(12122,'addenda18',1),(12123,'addenda19',1),(12105,'addenda2',1),(12118,'addenda20',1),(12125,'addenda21',1),(12126,'addenda22',1),(12124,'addenda23',1),(12129,'addenda24',1),(12127,'addenda25',1),(12131,'addenda26',1),(12130,'addenda27',1),(12128,'addenda28',1),(12133,'addenda29',1),(12103,'addenda3',1),(12132,'addenda30',1),(12134,'addenda31',1),(12136,'addenda32',1),(12135,'addenda33',1),(12138,'addenda34',1),(12137,'addenda35',1),(12139,'addenda36',1),(12140,'addenda37',1),(12142,'addenda38',1),(12143,'addenda39',1),(12107,'addenda4',1),(12144,'addenda40',1),(12141,'addenda41',1),(12145,'addenda42',1),(12147,'addenda43',1),(12146,'addenda44',1),(12149,'addenda45',1),(12148,'addenda46',1),(12151,'addenda47',1),(12150,'addenda48',1),(12152,'addenda49',1),(12108,'addenda5',1),(12153,'addenda50',1),(12154,'addenda51',1),(12155,'addenda52',1),(12156,'addenda53',1),(12157,'addenda54',1),(12158,'addenda55',1),(12159,'addenda56',1),(12160,'addenda57',1),(12161,'addenda58',1),(12162,'addenda59',1),(12109,'addenda6',1),(12163,'addenda60',1),(12164,'addenda61',1),(12165,'addenda62',1),(12166,'addenda63',1),(12167,'addenda64',1),(12168,'addenda65',1),(12169,'addenda66',1),(12170,'addenda67',1),(12171,'addenda68',1),(12172,'addenda69',1),(12111,'addenda7',1),(12173,'addenda70',1),(12174,'addenda71',1),(12175,'addenda72',1),(12176,'addenda73',1),(12177,'addenda74',1),(12178,'addenda75',1),(12179,'addenda76',1),(12180,'addenda77',1),(12181,'addenda78',1),(12182,'addenda79',1),(12112,'addenda8',1),(12183,'addenda80',1),(12184,'addenda81',1),(12185,'addenda82',1),(12186,'addenda83',1),(12187,'addenda84',1),(12188,'addenda85',1),(12189,'addenda86',1),(12190,'addenda87',1),(12191,'addenda88',1),(12192,'addenda89',1),(12110,'addenda9',1),(12193,'addenda90',1),(12194,'addenda91',1),(12195,'addenda92',1),(12196,'addenda93',1),(12197,'addenda94',1),(12198,'addenda95',1),(12199,'addenda96',1),(12200,'addenda97',1),(12201,'addenda98',1),(12202,'addenda99',1),(12203,'addenda0',2),(12204,'addenda1',2),(12214,'addenda10',2),(12213,'addenda11',2),(12217,'addenda12',2),(12215,'addenda13',2),(12216,'addenda14',2),(12222,'addenda15',2),(12220,'addenda16',2),(12221,'addenda17',2),(12219,'addenda18',2),(12223,'addenda19',2),(12205,'addenda2',2),(12218,'addenda20',2),(12225,'addenda21',2),(12224,'addenda22',2),(12227,'addenda23',2),(12226,'addenda24',2),(12228,'addenda25',2),(12231,'addenda26',2),(12229,'addenda27',2),(12230,'addenda28',2),(12233,'addenda29',2),(12206,'addenda3',2),(12232,'addenda30',2),(12237,'addenda31',2),(12236,'addenda32',2),(12235,'addenda33',2),(12238,'addenda34',2),(12234,'addenda35',2),(12240,'addenda36',2),(12239,'addenda37',2),(12241,'addenda38',2),(12243,'addenda39',2),(12207,'addenda4',2),(12242,'addenda40',2),(12245,'addenda41',2),(12244,'addenda42',2),(12246,'addenda43',2),(12248,'addenda44',2),(12247,'addenda45',2),(12249,'addenda46',2),(12253,'addenda47',2),(12250,'addenda48',2),(12252,'addenda49',2),(12208,'addenda5',2),(12254,'addenda50',2),(12251,'addenda51',2),(12255,'addenda52',2),(12256,'addenda53',2),(12257,'addenda54',2),(12258,'addenda55',2),(12259,'addenda56',2),(12260,'addenda57',2),(12261,'addenda58',2),(12262,'addenda59',2),(12210,'addenda6',2),(12263,'addenda60',2),(12264,'addenda61',2),(12265,'addenda62',2),(12266,'addenda63',2),(12267,'addenda64',2),(12268,'addenda65',2),(12269,'addenda66',2),(12270,'addenda67',2),(12271,'addenda68',2),(12272,'addenda69',2),(12212,'addenda7',2),(12273,'addenda70',2),(12274,'addenda71',2),(12275,'addenda72',2),(12276,'addenda73',2),(12277,'addenda74',2),(12278,'addenda75',2),(12279,'addenda76',2),(12280,'addenda77',2),(12281,'addenda78',2),(12282,'addenda79',2),(12209,'addenda8',2),(12283,'addenda80',2),(12284,'addenda81',2),(12285,'addenda82',2),(12286,'addenda83',2),(12287,'addenda84',2),(12288,'addenda85',2),(12289,'addenda86',2),(12290,'addenda87',2),(12291,'addenda88',2),(12292,'addenda89',2),(12211,'addenda9',2),(12293,'addenda90',2),(12294,'addenda91',2),(12295,'addenda92',2),(12296,'addenda93',2),(12297,'addenda94',2),(12298,'addenda95',2),(12299,'addenda96',2),(12300,'addenda97',2),(12301,'addenda98',2),(12302,'addenda99',2),(12303,'addenda0',3),(12309,'addenda139',3),(12306,'addenda140',3),(12305,'addenda15',3),(12311,'addenda154',3),(12313,'addenda179',3),(12310,'addenda184',3),(12314,'addenda189',3),(12304,'addenda22',3),(12312,'addenda44',3),(12307,'addenda61',3),(12308,'addenda89',3),(12315,'addenda0',4),(12324,'addenda152',4),(12318,'addenda17',4),(12325,'addenda179',4),(12326,'addenda195',4),(12317,'addenda22',4),(12316,'addenda35',4),(12319,'addenda41',4),(12321,'addenda46',4),(12323,'addenda77',4),(12322,'addenda87',4),(12320,'addenda94',4),(12328,'addenda0',5),(12327,'addenda1',5),(12337,'addenda10',5),(12338,'addenda11',5),(12340,'addenda12',5),(12341,'addenda13',5),(12339,'addenda14',5),(12342,'addenda15',5),(12346,'addenda16',5),(12344,'addenda17',5),(12343,'addenda18',5),(12345,'addenda19',5),(12329,'addenda2',5),(12347,'addenda20',5),(12349,'addenda21',5),(12348,'addenda22',5),(12351,'addenda23',5),(12350,'addenda24',5),(12352,'addenda25',5),(12353,'addenda26',5),(12354,'addenda27',5),(12355,'addenda28',5),(12356,'addenda29',5),(12330,'addenda3',5),(12357,'addenda30',5),(12359,'addenda31',5),(12358,'addenda32',5),(12360,'addenda33',5),(12362,'addenda34',5),(12361,'addenda35',5),(12363,'addenda36',5),(12365,'addenda37',5),(12364,'addenda38',5),(12366,'addenda39',5),(12331,'addenda4',5),(12368,'addenda40',5),(12367,'addenda41',5),(12369,'addenda42',5),(12370,'addenda43',5),(12372,'addenda44',5),(12373,'addenda45',5),(12371,'addenda46',5),(12374,'addenda47',5),(12375,'addenda48',5),(12376,'addenda49',5),(12332,'addenda5',5),(12378,'addenda50',5),(12377,'addenda51',5),(12379,'addenda52',5),(12380,'addenda53',5),(12381,'addenda54',5),(12382,'addenda55',5),(12383,'addenda56',5),(12384,'addenda57',5),(12386,'addenda58',5),(12385,'addenda59',5),(12333,'addenda6',5),(12387,'addenda60',5),(12388,'addenda61',5),(12389,'addenda62',5),(12391,'addenda63',5),(12390,'addenda64',5),(12393,'addenda65',5),(12392,'addenda66',5),(12394,'addenda67',5),(12395,'addenda68',5),(12397,'addenda69',5),(12335,'addenda7',5),(12396,'addenda70',5),(12399,'addenda71',5),(12398,'addenda72',5),(12400,'addenda73',5),(12402,'addenda74',5),(12401,'addenda75',5),(12403,'addenda76',5),(12404,'addenda77',5),(12406,'addenda78',5),(12405,'addenda79',5),(12334,'addenda8',5),(12407,'addenda80',5),(12408,'addenda81',5),(12409,'addenda82',5),(12410,'addenda83',5),(12411,'addenda84',5),(12413,'addenda85',5),(12412,'addenda86',5),(12414,'addenda87',5),(12415,'addenda88',5),(12418,'addenda89',5),(12336,'addenda9',5),(12417,'addenda90',5),(12416,'addenda91',5),(12419,'addenda92',5),(12420,'addenda93',5),(12422,'addenda94',5),(12423,'addenda95',5),(12421,'addenda96',5),(12424,'addenda97',5),(12425,'addenda98',5),(12426,'addenda99',5);
+/*!40000 ALTER TABLE `t_seckill_order` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-12-12 18:44:08

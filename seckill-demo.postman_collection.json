@@ -1,0 +1,512 @@
+{
+	"info": {
+		"_postman_id": "3d88fdf0-7f16-4149-a090-d02e15ebef67",
+		"name": "seckill-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GOODS-分页查询概览",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/goods/pageQueryOverview?pageNum=1&pageSize=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"goods",
+						"pageQueryOverview"
+					],
+					"query": [
+						{
+							"key": "pageNum",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GOODS-根据ID查询（数据库）",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/goods/queryByIdWithDB?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"goods",
+						"queryByIdWithDB"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GOODS-根据ID查询（性能优先）",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/goods/queryByIdWithPerformanceFirst?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"goods",
+						"queryByIdWithPerformanceFirst"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GOODS-根据ID查询（实时数据优先）",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/goods/queryByIdWithRTDataFirst?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"goods",
+						"queryByIdWithRTDataFirst"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-创建秒杀商品",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": \"999.99\",\r\n    \"stock\": \"10\",\r\n    \"startDatetime\": \"2022-12-09 14:00:00.000\",\r\n    \"endDatetime\": \"2022-12-10 14:00:00.000\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/createSeckillGoods?goodsId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"createSeckillGoods"
+					],
+					"query": [
+						{
+							"key": "goodsId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-查询最近的秒杀",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": \"999.99\",\r\n    \"stock\": \"10\",\r\n    \"startDatetime\": \"2022-12-10 14:00:00.000\",\r\n    \"endDatetime\": \"2022-12-11 14:00:00.000\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/queryLatestSeckill?goodsId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"queryLatestSeckill"
+					],
+					"query": [
+						{
+							"key": "goodsId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-秒杀（悲观锁）",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/seckillWithPessimismLock?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"seckillWithPessimismLock"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-秒杀（悲观锁-一人一单）",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/seckillWithPessimismLockAndOnePersonOneOrder?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"seckillWithPessimismLockAndOnePersonOneOrder"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-秒杀（乐观锁）",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/seckillWithOptimisticLock?id=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"seckillWithOptimisticLock"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-秒杀（乐观锁-一人一单）",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/seckillWithOptimisticLockAndOnePersonOneOrder?id=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"seckillWithOptimisticLockAndOnePersonOneOrder"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-秒杀（Redis）",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/seckillWithRedisLua?id=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"seckillWithRedisLua"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SecKillGoods-重置秒杀",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "addenda",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "100"
+				},
+				"url": {
+					"raw": "http://localhost:21882/seckilldemo/seckill/resetSeckill?id=1,2,3,4,5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "21882",
+					"path": [
+						"seckilldemo",
+						"seckill",
+						"resetSeckill"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1,2,3,4,5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
